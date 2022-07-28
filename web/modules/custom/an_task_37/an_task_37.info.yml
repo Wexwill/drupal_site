@@ -1,0 +1,5 @@
+name: 'Users Export'
+type: module
+description: 'Allows administrators to export users into CSV file'
+core_version_requirement: ^8 || ^9
+version: 1.x
