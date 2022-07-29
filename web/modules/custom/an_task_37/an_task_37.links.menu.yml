@@ -1,0 +1,5 @@
+an_task_37.admin_settings:
+  title: 'Users import'
+  description: 'Import users on site from CSV file.'
+  route_name: an_task_37.admin_settings
+  parent: 'system.admin_config_development'

@@ -1,0 +1,5 @@
+name: 'Users Import'
+type: module
+description: 'Allows administrators to import users from CSV file'
+core_version_requirement: ^8 || ^9
+version: 1.x
