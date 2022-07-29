@@ -1,5 +1,5 @@
-name: 'Users Export'
+name: 'Users Import'
 type: module
-description: 'Allows administrators to export users into CSV file'
+description: 'Allows administrators to import users from CSV file'
 core_version_requirement: ^8 || ^9
 version: 1.x
