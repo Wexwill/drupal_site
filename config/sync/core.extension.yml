@@ -2,6 +2,7 @@ _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
   an_task_37: 0
+  an_task_41: 0
   automated_cron: 0
   big_pipe: 0
   block: 0
@@ -29,6 +30,10 @@ module:
   link: 0
   menu_link_content: 0
   menu_ui: 0
+  migrate: 0
+  migrate_plus: 0
+  migrate_source_csv: 0
+  migrate_tools: 0
   mysql: 0
   node: 0
   options: 0

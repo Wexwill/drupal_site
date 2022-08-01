@@ -20,6 +20,9 @@
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/devel": "^4.1",
+        "drupal/migrate_plus": "^6.0",
+        "drupal/migrate_source_csv": "^3.5",
+        "drupal/migrate_tools": "^6.0",
         "drush/drush": "^11.1"
     },
     "conflict": {
