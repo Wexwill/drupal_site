@@ -1,0 +1,16 @@
+id: users
+label: 'Users'
+source:
+  plugin: csv
+  path: public://users_ids.csv
+  header_row_count: 1
+  ids: [id]
+  constants:
+    status: 1
+process:
+  name: name
+  email: email
+  pass: pass
+  status: constants/status
+destination:
+  plugin: 'entity:user'
