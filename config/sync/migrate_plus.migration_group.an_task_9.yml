@@ -1,0 +1,10 @@
+uuid: b31c0eed-2d48-499d-9679-a09b429cfab7
+langcode: en
+status: true
+dependencies: {  }
+id: an_task_9
+label: 'Hierarchical Terms Group'
+description: null
+source_type: CSV
+module: null
+shared_configuration: null

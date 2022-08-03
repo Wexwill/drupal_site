@@ -1,0 +1,23 @@
+id: countries
+label: Countries
+migration_group: an_task_9
+source:
+  plugin: csv
+  path: public://countries.csv
+  ids: [id]
+  delimiter: ";"
+  header_offset: 0
+  fields:
+    -
+      name: id
+      label: ID
+    -
+      name: country
+      label: Country
+process:
+  vid:
+    plugin: default_value
+    default_value: countries
+  name: country
+destination:
+  plugin: entity:taxonomy_term

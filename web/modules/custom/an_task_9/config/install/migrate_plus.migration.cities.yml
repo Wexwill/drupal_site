@@ -1,0 +1,41 @@
+id: cities
+label: Cities
+migration_group: an_task_9
+source:
+  plugin: csv
+  path: public://cities.csv
+  ids: [id]
+  delimiter: ";"
+  header_offset: 0
+  fields:
+    -
+      name: id
+      label: ID
+    -
+      name: city
+      label: City
+    -
+      name: country_id
+      label: Country_id
+process:
+  vid:
+    plugin: default_value
+    default_value: cities
+  name:
+    -
+      plugin: get
+      source: city
+    -
+      plugin: default_value
+      default_value: city
+  field_country_id:
+    -
+      plugin: migration_lookup
+      migration: countries
+      source: country_id
+  field_country_name:
+destination:
+  plugin: entity:taxonomy_term
+migration_dependencies:
+  required:
+    - countries
