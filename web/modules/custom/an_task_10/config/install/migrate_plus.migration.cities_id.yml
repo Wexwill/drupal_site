@@ -1,0 +1,32 @@
+id: cities_id
+label: Cities with ID
+migration_group: an_task_10
+source:
+  plugin: csv
+  path: public://cities.csv
+  ids: [id]
+  delimiter: ";"
+  header_offset: 0
+  fields:
+    -
+      name: id
+      label: ID
+    -
+      name: city
+      label: City
+    -
+      name: country_id
+      label: Country_id
+process:
+  vid:
+    plugin: default_value
+    default_value: cities
+  name:
+    -
+      plugin: concat
+      source:
+        - city
+        - id
+      delimiter: '-'
+destination:
+  plugin: entity:taxonomy_term
