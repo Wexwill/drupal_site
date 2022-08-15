@@ -1,0 +1,34 @@
+id: user_last_name
+label: Users with field name / last name
+migration_group: an_task_42
+source:
+  plugin: csv
+  path: public://users_task_42.csv
+  ids: [id]
+  delimiter: ";"
+  header_offset: 0
+  fields:
+    -
+      name: id
+      label: ID
+    -
+      name: name
+      label: Name
+    -
+      name: last_name
+      label: Last name
+process:
+  name:
+    -
+      plugin: get
+      source: name
+  roles: 'content_editor'
+  field_full_name:
+    -
+      plugin: concat
+      source:
+        - name
+        - last_name
+      delimiter: ' '
+destination:
+  plugin: entity:user
