@@ -1,0 +1,21 @@
+uuid: fa5443d0-e9f3-40e0-9738-08e259408bb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_full_name
+  module:
+    - text
+    - user
+id: user.user.field_full_name
+field_name: field_full_name
+entity_type: user
+bundle: user
+label: 'Full name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text
