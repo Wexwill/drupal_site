@@ -1,0 +1,4 @@
+name: 'Task 54'
+type: module
+core_version_requirement: ^8 || ^9
+description: 'Custom js file with Alert'
