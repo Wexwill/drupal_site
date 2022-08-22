@@ -1,0 +1,25 @@
+uuid: 6842b297-b756-43e9-9a27-9a2862621767
+langcode: en
+status: true
+dependencies:
+  module:
+    - an_task_55
+    - system
+  theme:
+    - bartik
+id: customblockwithajaxlink
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: custom_block
+settings:
+  id: custom_block
+  label: 'Custom block with ajax link'
+  label_display: visible
+  provider: an_task_55
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

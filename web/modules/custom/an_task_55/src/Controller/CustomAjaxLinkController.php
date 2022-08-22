@@ -9,7 +9,7 @@ use Drupal\Core\Controller\ControllerBase;
 /**
  * Class CustomAjaxLinkController
  *
- * @package Drupal\custom_ajax_link\Controller
+ * @package Drupal\an_task_55\Controller
  */
 class CustomAjaxLinkController extends ControllerBase{
 
