@@ -1,6 +1,6 @@
 /**
  * @file
- * Simple JavaScript file.
+ * Custom javascript file with alert.
  */
 
 (function ($, Drupal) {
@@ -11,4 +11,4 @@
       })
     }
   }
-})(jQuery, Drupal, drupalSettings);
+})(jQuery, Drupal);

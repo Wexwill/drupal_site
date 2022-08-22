@@ -1,8 +1,10 @@
 <?php
 
 /**
-* Implements hook_page_attachments().
-*/
+ * Implements hook_page_attachments().
+ *
+ * @param array $attachments
+ */
 function an_task_54_page_attachments(array &$attachments) {
-$attachments['#attached']['library'][] = 'an_task_54/an_task_54';
+  $attachments['#attached']['library'][] = 'an_task_54/an_task_54';
 }
