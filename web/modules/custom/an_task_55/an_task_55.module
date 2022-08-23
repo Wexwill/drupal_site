@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Contains an_task_55.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function an_task_55_theme() {
+
+  return [
+    'custom_block_with_ajax' => [
+      'template' => 'custom-block-with-ajax',
+      'variables' => [
+        'custom_url' => NULL,
+      ],
+    ],
+  ];
+}

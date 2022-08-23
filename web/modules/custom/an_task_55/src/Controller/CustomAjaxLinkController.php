@@ -14,13 +14,11 @@ use Drupal\Core\Controller\ControllerBase;
 class CustomAjaxLinkController extends ControllerBase{
 
   /**
-   * @param $name
-   *
    * @return \Drupal\Core\Ajax\AjaxResponse
    */
-  public function customAjaxLinkAlert($name) {
+  public function customAjaxLinkAlert() {
     $response = new AjaxResponse();
-    $response->addCommand(new AlertCommand('Hello ' . $name));
+    $response->addCommand(new AlertCommand('Hello!'));
 
     return $response;
   }
