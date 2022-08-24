@@ -1,0 +1,4 @@
+an_task_55:
+  version: 1.x
+  dependencies:
+    - core/drupal.ajax

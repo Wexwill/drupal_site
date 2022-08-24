@@ -1,0 +1,7 @@
+an_task_55.routing:
+  path: '/custom_ajax_link/andrei'
+  defaults:
+    _title: 'Custom Ajax Link'
+    _controller: '\Drupal\an_task_55\Controller\CustomAjaxLinkController::customAjaxLinkAlert'
+  requirements:
+    _permission: 'access content'

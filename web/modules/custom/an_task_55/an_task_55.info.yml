@@ -1,0 +1,4 @@
+name: 'Task 55'
+type: module
+description: 'Simple link with ajax'
+core_version_requirement: ^8 || ^9
