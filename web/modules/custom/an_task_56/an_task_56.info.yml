@@ -1,0 +1,4 @@
+name: 'Task 56'
+type: module
+description: 'Simple link with modal window'
+core_version_requirement: ^8 || ^9

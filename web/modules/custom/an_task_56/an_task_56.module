@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Contains an_task_56.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function an_task_56_theme() {
+
+  return [
+    'custom_block_with_modal' => [
+      'template' => 'custom-block-with-modal',
+      'variables' => [
+        'custom_url' => NULL,
+      ],
+    ],
+  ];
+}

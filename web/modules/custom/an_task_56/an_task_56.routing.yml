@@ -1,0 +1,7 @@
+an_task_56.routing:
+  path: '/custom_modal_window/modal'
+  defaults:
+    _title: 'Custom Ajax Link'
+    _controller: '\Drupal\an_task_56\Controller\CustomModalWindowController::customModalWindow'
+  requirements:
+    _permission: 'access content'
