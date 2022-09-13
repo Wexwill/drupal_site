@@ -1,0 +1,8 @@
+an_task_78.routing:
+  path: '/testcache'
+  defaults:
+    _controller: '\Drupal\an_task_78\Controller\TestCachePageController::content'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
