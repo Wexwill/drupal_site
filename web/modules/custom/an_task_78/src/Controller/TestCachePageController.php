@@ -15,8 +15,8 @@ class TestCachePageController extends ControllerBase{
    * @return \Drupal\Component\Render\MarkupInterface|string
    */
   public function getCachedUser() {
-    $cid = 'current_user';
     $user = \Drupal::currentUser()->getDisplayName();
+    $cid = 'current_user:' . \Drupal::currentUser()->id();
     $cache = \Drupal::cache()->get($cid);
 
     if ($cache && $user === $cache->data) {
