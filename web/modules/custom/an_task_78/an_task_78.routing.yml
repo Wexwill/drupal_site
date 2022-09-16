@@ -4,5 +4,6 @@ an_task_78.routing:
     _controller: '\Drupal\an_task_78\Controller\TestCachePageController::content'
   requirements:
     _permission: 'access content'
+    _user_is_logged_in: 'TRUE'
   options:
     no_cache: TRUE
