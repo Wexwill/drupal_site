@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Contains an_task_78.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function an_task_78_theme() {
+
+  return [
+    'testcache_page' => [
+      'template' => 'testcache-page',
+      'variables' => [
+        'current_user' => NULL,
+      ],
+    ],
+  ];
+}

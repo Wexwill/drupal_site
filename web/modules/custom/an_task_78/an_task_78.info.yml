@@ -1,0 +1,4 @@
+name: 'Task 78'
+type: module
+description: 'Custom page with cached user'
+core_version_requirement: ^8 || ^9
