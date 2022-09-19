@@ -1,0 +1,21 @@
+uuid: 7bc9b499-6e0d-458e-83bb-9c12978ac274
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_latitude
+    - paragraphs.paragraphs_type.coordinates
+  module:
+    - text
+id: paragraph.coordinates.field_latitude
+field_name: field_latitude
+entity_type: paragraph
+bundle: coordinates
+label: Latitude
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text
