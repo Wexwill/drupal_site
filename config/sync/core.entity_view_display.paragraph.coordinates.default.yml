@@ -1,0 +1,30 @@
+uuid: 9b367112-c961-4ce5-b57f-3fd27e844aa6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.coordinates.field_latitude
+    - field.field.paragraph.coordinates.field_longitude
+    - paragraphs.paragraphs_type.coordinates
+  module:
+    - text
+id: paragraph.coordinates.default
+targetEntityType: paragraph
+bundle: coordinates
+mode: default
+content:
+  field_latitude:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_longitude:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

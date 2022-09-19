@@ -1,0 +1,10 @@
+uuid: 1a1af2a0-705a-4240-9e94-d3b24f79198d
+langcode: en
+status: true
+dependencies: {  }
+id: coordinates
+label: Coordinates
+icon_uuid: null
+icon_default: null
+description: 'latitude and longitude'
+behavior_plugins: {  }

@@ -1,0 +1,21 @@
+uuid: 24d1b0f3-fc01-440b-b30b-10ea9425c7dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_longitude
+    - paragraphs.paragraphs_type.coordinates
+  module:
+    - text
+id: paragraph.coordinates.field_longitude
+field_name: field_longitude
+entity_type: paragraph
+bundle: coordinates
+label: Longitude
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text
