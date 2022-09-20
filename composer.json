@@ -24,6 +24,8 @@
         "drupal/migrate_source_csv": "^3.5",
         "drupal/migrate_tools": "^6.0",
         "drupal/paragraphs": "^1.15",
+        "drupal/token": "^1.11",
+        "drupal/token_filter": "^1.4",
         "drush/drush": "^11.1"
     },
     "conflict": {

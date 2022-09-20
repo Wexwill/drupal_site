@@ -1,0 +1,4 @@
+name: 'Task 80'
+type: module
+description: 'Provides custom tokens'
+core_version_requirement: ^8 || ^9
