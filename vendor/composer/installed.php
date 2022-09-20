@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7c89f29fbfab95f5fc254297bbe88f20f7394c29',
+        'reference' => 'ce10ee4704f4ebae1779d793730e9e1fa777f17f',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -859,7 +859,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7c89f29fbfab95f5fc254297bbe88f20f7394c29',
+            'reference' => 'ce10ee4704f4ebae1779d793730e9e1fa777f17f',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
@@ -957,6 +957,15 @@
             'replaced' => array(
                 0 => '9.4.2',
             ),
+        ),
+        'drupal/token' => array(
+            'pretty_version' => '1.11.0',
+            'version' => '1.11.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/token',
+            'aliases' => array(),
+            'reference' => '8.x-1.11',
+            'dev_requirement' => false,
         ),
         'drupal/toolbar' => array(
             'dev_requirement' => false,

@@ -14,7 +14,7 @@ field_name: body
 entity_type: node
 bundle: page
 label: Body
-description: ''
+description: '[custom:link_to_google]'
 required: false
 translatable: true
 default_value: {  }
