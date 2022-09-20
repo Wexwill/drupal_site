@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ce10ee4704f4ebae1779d793730e9e1fa777f17f',
+        'reference' => '0a3c763d03a3200146e9c28750a4faf11b0c31ac',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -859,7 +859,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ce10ee4704f4ebae1779d793730e9e1fa777f17f',
+            'reference' => '0a3c763d03a3200146e9c28750a4faf11b0c31ac',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
@@ -965,6 +965,15 @@
             'install_path' => __DIR__ . '/../../web/modules/contrib/token',
             'aliases' => array(),
             'reference' => '8.x-1.11',
+            'dev_requirement' => false,
+        ),
+        'drupal/token_filter' => array(
+            'pretty_version' => '1.4.0',
+            'version' => '1.4.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/token_filter',
+            'aliases' => array(),
+            'reference' => '8.x-1.4',
             'dev_requirement' => false,
         ),
         'drupal/toolbar' => array(

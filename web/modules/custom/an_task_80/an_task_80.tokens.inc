@@ -14,13 +14,13 @@ use Drupal\Core\Render\Markup;
 function an_task_80_token_info(){
 
   $types['custom'] = [
-    'name' => t("Custom type"),
-    'description' => t("Custom type grouping for tokens"),
+    'name' => t('Custom type'),
+    'description' => t('Custom type grouping for tokens'),
   ];
 
   $custom['link_to_google'] = [
-    'name' => t("Google link"),
-    'description' => t("Contains link to google site"),
+    'name' => t('Google link'),
+    'description' => t('Contains link to google site'),
   ];
 
   return [
