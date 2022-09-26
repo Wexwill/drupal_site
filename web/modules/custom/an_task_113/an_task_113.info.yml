@@ -1,0 +1,4 @@
+name: 'Task 113'
+type: module
+description: 'Provides custom text filter'
+core_version_requirement: ^8 || ^9
