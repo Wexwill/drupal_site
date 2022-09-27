@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - an_task_113
     - editor
     - token_filter
 _core:
@@ -51,3 +52,10 @@ filters:
     weight: 0
     settings:
       replace_empty: '0'
+  capitalized_word:
+    id: capitalized_word
+    provider: an_task_113
+    status: true
+    weight: 0
+    settings:
+      words: 'test daf ssu'
