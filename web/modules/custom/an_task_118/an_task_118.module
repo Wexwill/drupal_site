@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Contains an_task_118.module.
+ */
+
+/**
+ * Implements hook_entity_update().
+ */
+function an_task_118_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node'){
+    $name = $entity->label();
+    $bundle = $entity->bundle();
+
+    \Drupal::logger('Node update')->notice('Node with title @NODE_TITLE of type @NODE_TYPE has been updated', [
+      '@NODE_TITLE' => $name,
+      '@NODE_TYPE' => $bundle,
+    ]);
+  }
+}

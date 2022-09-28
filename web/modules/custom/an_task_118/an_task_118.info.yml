@@ -1,0 +1,4 @@
+name: 'Task 118'
+type: module
+description: 'Provides custom log message type'
+core_version_requirement: ^8 || ^9
