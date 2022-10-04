@@ -1,0 +1,4 @@
+name: 'Task 83'
+type: module
+description: 'Provides custom REST resource'
+core_version_requirement: ^8 || ^9
