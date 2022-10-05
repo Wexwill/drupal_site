@@ -1,0 +1,19 @@
+uuid: 29a4853d-3e9b-4beb-a347-64e517cea643
+langcode: en
+status: true
+dependencies:
+  module:
+    - an_task_83
+    - serialization
+    - user
+id: list_users_resource
+plugin_id: list_users_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+    - xml
+  authentication:
+    - cookie
