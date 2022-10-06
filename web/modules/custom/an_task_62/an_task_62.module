@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Contains an_task_62.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function an_task_62_form_user_pass_reset_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  //Getting the current URL
+  $path = \Drupal::request()->getRequestUri();
+  $array = explode('/', $path);
+
+  //UID from URL
+  $uid = $array[3];
+
+  //Loading the current user
+  $account = User::load($uid);
+  $user_name = $account->getDisplayName();
+
+  $form['newMessage'] = ['#markup' => t('<p>Well %user_name. Have you forgotten again?</p>', ['%user_name' => $user_name])];
+
+  return $form;
+}
