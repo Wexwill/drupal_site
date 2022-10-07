@@ -1,0 +1,4 @@
+name: 'Task 62'
+type: module
+description: 'Module that allows to redefine reset password page'
+core_version_requirement: ^8 || ^9
