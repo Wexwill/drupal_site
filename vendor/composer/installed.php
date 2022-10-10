@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '60820c8c881b86b573f4fc3511561e9d3fbec3b4',
+        'reference' => '4e63ce8647b0af792333bbe886ad6dca307d5f84',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -859,7 +859,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '60820c8c881b86b573f4fc3511561e9d3fbec3b4',
+            'reference' => '4e63ce8647b0af792333bbe886ad6dca307d5f84',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
@@ -888,6 +888,24 @@
             'replaced' => array(
                 0 => '9.4.2',
             ),
+        ),
+        'drupal/search_api' => array(
+            'pretty_version' => '1.26.0',
+            'version' => '1.26.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/search_api',
+            'aliases' => array(),
+            'reference' => '8.x-1.26',
+            'dev_requirement' => false,
+        ),
+        'drupal/search_api_solr' => array(
+            'pretty_version' => '4.2.9',
+            'version' => '4.2.9.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/search_api_solr',
+            'aliases' => array(),
+            'reference' => '4.2.9',
+            'dev_requirement' => false,
         ),
         'drupal/serialization' => array(
             'dev_requirement' => false,
@@ -1156,6 +1174,15 @@
             'reference' => '9d2e0265c5d90f5dd601bc65ff717e05cec19b47',
             'dev_requirement' => false,
         ),
+        'maennchen/zipstream-php' => array(
+            'pretty_version' => '2.2.1',
+            'version' => '2.2.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../maennchen/zipstream-php',
+            'aliases' => array(),
+            'reference' => '211e9ba1530ea5260b45d90c9ea252f56ec52729',
+            'dev_requirement' => false,
+        ),
         'masterminds/html5' => array(
             'pretty_version' => '2.7.5',
             'version' => '2.7.5.0',
@@ -1163,6 +1190,15 @@
             'install_path' => __DIR__ . '/../masterminds/html5',
             'aliases' => array(),
             'reference' => 'f640ac1bdddff06ea333a920c95bbad8872429ab',
+            'dev_requirement' => false,
+        ),
+        'myclabs/php-enum' => array(
+            'pretty_version' => '1.8.4',
+            'version' => '1.8.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../myclabs/php-enum',
+            'aliases' => array(),
+            'reference' => 'a867478eae49c9f59ece437ae7f9506bfaa27483',
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
@@ -1241,11 +1277,29 @@
                 1 => '1.0',
             ),
         ),
+        'psr/event-dispatcher' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/event-dispatcher',
+            'aliases' => array(),
+            'reference' => 'dbefd12671e8a14ec7f180cab83036ed26714bb0',
+            'dev_requirement' => false,
+        ),
         'psr/event-dispatcher-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
             ),
+        ),
+        'psr/http-client' => array(
+            'pretty_version' => '1.0.1',
+            'version' => '1.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/http-client',
+            'aliases' => array(),
+            'reference' => '2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
+            'dev_requirement' => false,
         ),
         'psr/http-factory' => array(
             'pretty_version' => '1.0.1',
@@ -1327,6 +1381,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'solarium/solarium' => array(
+            'pretty_version' => '6.2.7',
+            'version' => '6.2.7.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../solarium/solarium',
+            'aliases' => array(),
+            'reference' => '6d6d13b4eda222e7bdb9616545aa67efbe8c6cec',
+            'dev_requirement' => false,
         ),
         'stack/builder' => array(
             'pretty_version' => 'v1.0.6',
