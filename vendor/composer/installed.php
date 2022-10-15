@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4e63ce8647b0af792333bbe886ad6dca307d5f84',
+        'reference' => '8c9d6a69f1c80815e1381c6563a964d5441c58ae',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -595,6 +595,15 @@
             'reference' => '8.x-1.10',
             'dev_requirement' => false,
         ),
+        'drupal/facets' => array(
+            'pretty_version' => '2.0.5',
+            'version' => '2.0.5.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/facets',
+            'aliases' => array(),
+            'reference' => '2.0.5',
+            'dev_requirement' => false,
+        ),
         'drupal/field' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -859,7 +868,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4e63ce8647b0af792333bbe886ad6dca307d5f84',
+            'reference' => '8c9d6a69f1c80815e1381c6563a964d5441c58ae',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(

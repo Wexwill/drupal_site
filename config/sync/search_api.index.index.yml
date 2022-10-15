@@ -3,11 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_book_genre
     - search_api.server.solr
   module:
     - search_api_solr
-    - node
     - search_api
+    - node
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -57,20 +58,20 @@ name: index
 description: ''
 read_only: false
 field_settings:
-  nid:
-    label: ID
+  field_book_genre:
+    label: 'Book genre'
     datasource_id: 'entity:node'
-    property_path: nid
-    type: integer
+    property_path: field_book_genre
+    type: string
     dependencies:
-      module:
-        - node
+      config:
+        - field.storage.node.field_book_genre
 datasource_settings:
   'entity:node':
     bundles:
       default: false
       selected:
-        - article
+        - page
     languages:
       default: true
       selected: {  }

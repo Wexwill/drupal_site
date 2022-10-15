@@ -1,0 +1,11 @@
+uuid: 36780017-5757-41ac-a91f-81e45a94e203
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.book_genre
+id: taxonomy_term.book_genre
+target_entity_type_id: taxonomy_term
+target_bundle: book_genre
+default_langcode: site_default
+language_alterable: false
