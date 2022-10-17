@@ -30,4 +30,6 @@ content:
     region: content
 hidden:
   field_full_name: true
+  langcode: true
   member_for: true
+  search_api_excerpt: true
