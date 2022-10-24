@@ -1,0 +1,6 @@
+an_task_157.add_one_product:
+  path: '/add/product/{pid}/{quantity}'
+  defaults:
+    _controller: '\Drupal\an_task_157\Controller\AddOneProductController::addToCart'
+  requirements:
+    _permission: 'access content'
