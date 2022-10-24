@@ -1,0 +1,28 @@
+uuid: e0ce5eac-8123-4855-8e1b-36b4b80a3909
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_item_type.order
+    - core.entity_form_mode.commerce_order_item.add_to_cart
+    - field.field.commerce_order_item.order.field_text
+  module:
+    - commerce_product
+id: commerce_order_item.order.add_to_cart
+targetEntityType: commerce_order_item
+bundle: order
+mode: add_to_cart
+content:
+  purchased_entity:
+    type: commerce_product_variation_attributes
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  adjustments: true
+  created: true
+  field_text: true
+  quantity: true
+  total_price: true
+  unit_price: true

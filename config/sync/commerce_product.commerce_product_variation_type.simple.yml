@@ -1,0 +1,10 @@
+uuid: e7fbc608-ad2b-42a6-b071-83799878c733
+langcode: en
+status: true
+dependencies: {  }
+id: simple
+label: simple
+traits: {  }
+locked: false
+orderItemType: order
+generateTitle: false
