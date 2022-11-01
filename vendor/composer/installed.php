@@ -5,11 +5,22 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '37d87429df03124bf95998b6a5c5ed2ea795fae8',
+        'reference' => 'e66b648cf6279d2cbf203d64ae5421cc04fa83a5',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
     'versions' => array(
+        'adomasevich/pre-commit-linter' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../adomasevich/pre-commit-linter',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => 'ab1aa011865eacdf338e5f6ad5ff63a09d05f7a8',
+            'dev_requirement' => true,
+        ),
         'asm89/stack-cors' => array(
             'pretty_version' => '1.3.0',
             'version' => '1.3.0.0',
@@ -144,6 +155,15 @@
             'aliases' => array(),
             'reference' => '9ef08d471573d6a56405b06ef6830dd70c883072',
             'dev_requirement' => false,
+        ),
+        'dealerdirect/phpcodesniffer-composer-installer' => array(
+            'pretty_version' => 'v0.7.2',
+            'version' => '0.7.2.0',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../dealerdirect/phpcodesniffer-composer-installer',
+            'aliases' => array(),
+            'reference' => '1c968e542d8843d7cd71de3c5c9c3ff3ad71a1db',
+            'dev_requirement' => true,
         ),
         'dflydev/dot-access-data' => array(
             'pretty_version' => 'v3.0.1',
@@ -333,6 +353,15 @@
             'replaced' => array(
                 0 => '9.4.2',
             ),
+        ),
+        'drupal/coder' => array(
+            'pretty_version' => '8.3.16',
+            'version' => '8.3.16.0',
+            'type' => 'phpcodesniffer-standard',
+            'install_path' => __DIR__ . '/../drupal/coder',
+            'aliases' => array(),
+            'reference' => 'd6f6112e5e84ff4f6baaada223c93dadbd6d3887',
+            'dev_requirement' => true,
         ),
         'drupal/color' => array(
             'dev_requirement' => false,
@@ -994,7 +1023,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '37d87429df03124bf95998b6a5c5ed2ea795fae8',
+            'reference' => 'e66b648cf6279d2cbf203d64ae5421cc04fa83a5',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
@@ -1345,6 +1374,15 @@
             'reference' => 'a867478eae49c9f59ece437ae7f9506bfaa27483',
             'dev_requirement' => false,
         ),
+        'neronmoon/scriptsdev' => array(
+            'pretty_version' => 'v0.1.9',
+            'version' => '0.1.9.0',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../neronmoon/scriptsdev',
+            'aliases' => array(),
+            'reference' => 'e812b334bc662cccc4a965c245812b59ae2157cb',
+            'dev_requirement' => false,
+        ),
         'nikic/php-parser' => array(
             'pretty_version' => 'v4.14.0',
             'version' => '4.14.0.0',
@@ -1395,6 +1433,15 @@
             'aliases' => array(),
             'reference' => 'b14fbe2ddb0b9f94f5b24cf08783d599f776fff0',
             'dev_requirement' => false,
+        ),
+        'phpstan/phpdoc-parser' => array(
+            'pretty_version' => '1.13.0',
+            'version' => '1.13.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpstan/phpdoc-parser',
+            'aliases' => array(),
+            'reference' => '33aefcdab42900e36366d0feab6206e2dd68f947',
+            'dev_requirement' => true,
         ),
         'psr/cache' => array(
             'pretty_version' => '1.0.1',
@@ -1526,6 +1573,24 @@
                 0 => '*',
             ),
         ),
+        'sirbrillig/phpcs-variable-analysis' => array(
+            'pretty_version' => 'v2.11.9',
+            'version' => '2.11.9.0',
+            'type' => 'phpcodesniffer-standard',
+            'install_path' => __DIR__ . '/../sirbrillig/phpcs-variable-analysis',
+            'aliases' => array(),
+            'reference' => '62730888d225d55a613854b6a76fb1f9f57d1618',
+            'dev_requirement' => true,
+        ),
+        'slevomat/coding-standard' => array(
+            'pretty_version' => '8.6.2',
+            'version' => '8.6.2.0',
+            'type' => 'phpcodesniffer-standard',
+            'install_path' => __DIR__ . '/../slevomat/coding-standard',
+            'aliases' => array(),
+            'reference' => '080f592b16f021a3a8e43d95ca8f57b87ddcf4e6',
+            'dev_requirement' => true,
+        ),
         'solarium/solarium' => array(
             'pretty_version' => '6.2.7',
             'version' => '6.2.7.0',
@@ -1534,6 +1599,15 @@
             'aliases' => array(),
             'reference' => '6d6d13b4eda222e7bdb9616545aa67efbe8c6cec',
             'dev_requirement' => false,
+        ),
+        'squizlabs/php_codesniffer' => array(
+            'pretty_version' => '3.7.1',
+            'version' => '3.7.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
+            'aliases' => array(),
+            'reference' => '1359e176e9307e906dc3d890bcc9603ff6d90619',
+            'dev_requirement' => true,
         ),
         'stack/builder' => array(
             'pretty_version' => 'v1.0.6',
