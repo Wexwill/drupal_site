@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Installation hooks for an_task_157 module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function an_task_157_schema() {
+  $schema['shareable_cart_info'] = [
+    'description' => 'Stores cart data.',
+    'fields' => [
+      'id' => [
+        'description' => 'cart id',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'verification_key' => [
+        'description' => 'Unique key for each cart.',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'data' => [
+        'description' => 'Cart data in JSON format.',
+        'type' => 'text',
+        'size' => 'medium',
+      ]
+    ],
+    'indexes' => [
+      'id' => ['id'],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}

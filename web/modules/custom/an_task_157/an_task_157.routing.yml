@@ -4,3 +4,9 @@ an_task_157.add_one_product:
     _controller: '\Drupal\an_task_157\Controller\AddOneProductController::addToCart'
   requirements:
     _permission: 'access content'
+an_task_157.shareable_cart:
+  path: '/shareable-cart'
+  defaults:
+    _form: '\Drupal\an_task_157\Form\ShareableCartForm'
+  requirements:
+    _permission: 'access content'

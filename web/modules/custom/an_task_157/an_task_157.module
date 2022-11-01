@@ -8,6 +8,7 @@
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\OpenModalDialogCommand;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_form_alter().
@@ -42,13 +43,14 @@ function ajaxModal(array &$form, FormStateInterface $form_state) {
 
   // Generate verification key.
   $request_time = \Drupal::time()->getCurrentTime();
-  $verification_key = hash("sha256", $request_time);
+  $verification_key = hash('sha256', $request_time);
 
   $host = \Drupal::request()->getSchemeAndHttpHost();
+  $link = Url::fromRoute('an_task_157.shareable_cart')->toString();
 
   // Render shareable link in modal window if data was successfully pushed into database.
   if (putProductsInDatabase($verification_key)) {
-    $content['#markup'] = '<p id="cart-link">'. $host . '/shareable-cart?key=' . $verification_key . '</p>';
+    $content['#markup'] = '<p id="cart-link">' . $host . $link . '?key=' . $verification_key . '</p>';
   } else {
     $content['#markup'] = '<p>Error!</p>';
   }
@@ -80,14 +82,19 @@ function putProductsInDatabase($verification_key) {
     $item = [];
 
     $product_variation = $order_item->getPurchasedEntity();
+    $title = $order_item->title->value;
+    $price = $order_item->getUnitPrice();
+    $quantity = (int) $order_item->quantity->value;
+    $total_price = $price->getNumber() * $quantity;
+
+    $item['title'] = $title;
+    $item['price'] = $price->__toString();
+    $item['quantity'] = $quantity;
+    $item['total_price'] = $total_price . ' ' . $price->getCurrencyCode();
     $item['sku'] = $product_variation->getSku();
-    $item['title'] = $order_item->title->value;
-    $item['price'] = (int) $order_item->getUnitPrice()->getNumber();
-    $item['quantity'] = (int) $order_item->quantity->value;
 
     $data[] = $item;
   }
-
   $data = json_encode($data);
 
   $connection = \Drupal::service('database');
@@ -98,7 +105,7 @@ function putProductsInDatabase($verification_key) {
     ])
     ->execute();
 
-  return TRUE;
+  return true;
 }
 
 /**
@@ -114,90 +121,4 @@ function getProductsFromDatabase($verification_key) {
     ->condition('sci.verification_key', $verification_key)
     ->execute()
     ->fetchField();
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function an_task_157_preprocess_node(&$variables) {
-  $current_path = \Drupal::service('path.current')->getPath();
-  $alias = '';
-
-  if (!empty($variables['node'])) {
-    $alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
-  }
-
-  // Remove page caching for the node.
-  if ($alias === '/shareable-cart') {
-    $variables['#cache']['max-age'] = 0;
-  }
-
-  // Collect params from URL.
-  $request = \Drupal::request();
-  $query_parameters = $request->query->all();
-
-  //Load shareable products.
-  if ($alias === '/shareable-cart' && isset($query_parameters['key'])) {
-    $verification_key = $query_parameters['key'];
-    $cart_data = getProductsFromDatabase($verification_key);
-
-    if (!empty($cart_data)) {
-      $cart_data = json_decode($cart_data, true);
-      $variables['cart_data'] = $cart_data;
-      $variables['verification_key'] = $verification_key;
-    }
-  }
-
-  //Add shareable products to the cart.
-  if ($alias === '/shareable-cart' && isset($_POST['verification_key'])) {
-    $verification_key = $_POST['verification_key'];
-    $cart_data = getProductsFromDatabase($verification_key);
-
-    if (!empty($cart_data)) {
-      $cart_data = json_decode($cart_data, true);
-
-      $store_id = 1;
-      $order_type = 'default';
-
-      $entity_manager = \Drupal::entityTypeManager();
-      $cart_manager = \Drupal::service('commerce_cart.cart_manager');
-      $cart_provider = \Drupal::service('commerce_cart.cart_provider');
-      $store = $entity_manager->getStorage('commerce_store')->load($store_id);
-
-      // Load current users cart.
-      $cart = $cart_provider->getCart($order_type, $store);
-
-      if (!$cart) {
-        $cart = $cart_provider->createCart($order_type, $store);
-      }
-
-      // Push each product to the users cart.
-      foreach ($cart_data as $product) {
-        $product_variation = $entity_manager->getStorage('commerce_product_variation')->load($product['sku']);
-
-        //Create new order item
-        $order_item = $entity_manager->getStorage('commerce_order_item')->create([
-          'type' => 'default',
-          'purchased_entity' => (string) $product['sku'],
-          'quantity' => $product['quantity'],
-          'unit_price' => $product_variation->getPrice(),
-        ]);
-        $order_item->save();
-
-        $cart_manager->addOrderItem($cart, $order_item);
-      }
-    }
-  }
-}
-
-/**
- * Implements hook_theme().
- */
-function an_task_157_theme($existing, $type, $theme, $path) {
-  return [
-    'node__53' => [
-      'template' => 'node--53',
-      'base hook' => 'node',
-    ]
-  ];
 }

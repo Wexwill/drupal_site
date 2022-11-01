@@ -1,10 +1,10 @@
 <?php
+
 namespace Drupal\an_task_157\Controller;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\AlertCommand;
 use Drupal\Core\Controller\ControllerBase;
-
 
 /**
  * Class AddOneProductController
@@ -23,12 +23,10 @@ class AddOneProductController extends ControllerBase {
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function addToCart($pid, $quantity) {
-
     $ajax_response = new AjaxResponse();
 
-    //Add shareable product to the cart.
+    // Add shareable product to the cart.
     if (!empty($pid) && !empty($quantity)) {
-
       $store_id = 1;
       $order_type = 'default';
 
@@ -45,7 +43,7 @@ class AddOneProductController extends ControllerBase {
 
       $product_variation = $entity_manager->getStorage('commerce_product_variation')->load($pid);
 
-      //Create new order item.
+      // Create new order item.
       $order_item = $entity_manager->getStorage('commerce_order_item')->create(array(
         'type' => 'default',
         'purchased_entity' => (string) $pid,
@@ -60,7 +58,5 @@ class AddOneProductController extends ControllerBase {
     }
 
     return $ajax_response;
-
   }
 }
-
