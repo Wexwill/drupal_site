@@ -1,0 +1,5 @@
+an_task_157:
+  version: 1.x
+  dependencies:
+    - core/drupal.dialog.ajax
+    - core/drupal.ajax

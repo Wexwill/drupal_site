@@ -1,0 +1,14 @@
+uuid: db41bf69-9e8e-43e9-9232-152959016bc1
+langcode: en
+status: true
+dependencies: {  }
+id: simple
+label: simple
+traits: {  }
+locked: false
+description: ''
+variationType: simple
+variationTypes:
+  - simple
+multipleVariations: false
+injectVariationFields: true

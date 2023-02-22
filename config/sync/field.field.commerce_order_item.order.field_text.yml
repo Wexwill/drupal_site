@@ -1,0 +1,19 @@
+uuid: 65d3f963-f12e-4681-9b4e-f44b9297d9d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_item_type.order
+    - field.storage.commerce_order_item.field_text
+id: commerce_order_item.order.field_text
+field_name: field_text
+entity_type: commerce_order_item
+bundle: order
+label: text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

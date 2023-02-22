@@ -1,0 +1,15 @@
+uuid: fe3e2540-f063-477d-9c6e-0a7d3d83da94
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_tax
+third_party_settings:
+  commerce_tax:
+    taxable_type: physical_goods
+id: order
+label: Order
+traits: {  }
+locked: false
+purchasableEntityType: commerce_product_variation
+orderType: default

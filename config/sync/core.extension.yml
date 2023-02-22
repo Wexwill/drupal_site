@@ -1,9 +1,11 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  address: 0
   an_task_10: 0
   an_task_113: 0
   an_task_118: 0
+  an_task_157: 0
   an_task_37: 0
   an_task_42: 0
   an_task_55: 0
@@ -18,7 +20,22 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor: 0
+  color_field: 0
   comment: 0
+  commerce: 0
+  commerce_cart: 0
+  commerce_checkout: 0
+  commerce_log: 0
+  commerce_number_pattern: 0
+  commerce_order: 0
+  commerce_payment: 0
+  commerce_payment_example: 0
+  commerce_price: 0
+  commerce_product: 0
+  commerce_promotion: 0
+  commerce_shipping: 0
+  commerce_store: 0
+  commerce_tax: 0
   config: 0
   contact: 0
   contextual: 0
@@ -29,6 +46,7 @@ module:
   devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
+  entity: 0
   entity_reference_revisions: 0
   facets: 0
   facets_searchbox_widget: 0
@@ -39,6 +57,7 @@ module:
   help: 0
   history: 0
   image: 0
+  inline_entity_form: 0
   language: 0
   link: 0
   menu_link_content: 0
@@ -53,6 +72,8 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  physical: 0
+  profile: 0
   rdf: 0
   rest: 0
   restui: 0
@@ -61,6 +82,7 @@ module:
   search_api_solr: 0
   serialization: 0
   shortcut: 0
+  state_machine: 0
   system: 0
   taxonomy: 0
   text: 0

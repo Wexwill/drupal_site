@@ -1,0 +1,124 @@
+<?php
+
+/**
+ * @file
+ * Contains an_task_157.module.
+ */
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\OpenModalDialogCommand;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_form_alter().
+ */
+function an_task_157_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'views_form_commerce_cart_form_default_1') {
+    $form['show_link_in_modal'] = [
+      '#type' => 'button',
+      '#name' => 'show_link_in_modal',
+      '#value' => 'Share',
+      '#ajax' => [
+        'callback' => 'ajaxModal',
+      ],
+    ];
+  }
+}
+
+/**
+ * @param array $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ */
+function ajaxModal(array &$form, FormStateInterface $form_state) {
+  $content['#attached']['library'][] = 'an_task_157/an_task_157';
+
+  $options = [
+    'width' => '400',
+    'height' => '150',
+    'dialogClass' => 'my-form',
+  ];
+
+  // Generate verification key.
+  $request_time = \Drupal::time()->getCurrentTime();
+  $verification_key = hash('sha256', $request_time);
+
+  $host = \Drupal::request()->getSchemeAndHttpHost();
+  $link = Url::fromRoute('an_task_157.shareable_cart')->toString();
+
+  // Render shareable link in modal window if data was successfully pushed into database.
+  if (putProductsInDatabase($verification_key)) {
+    $content['#markup'] = '<p id="cart-link">' . $host . $link . '?key=' . $verification_key . '</p>';
+  } else {
+    $content['#markup'] = '<p>Error!</p>';
+  }
+
+  $title = 'Here is the link to your cart:';
+  $response = new AjaxResponse();
+  $response->addCommand(new OpenModalDialogCommand($title, $content, $options));
+
+  return $response;
+}
+
+/**
+ * Put cart data in the database.
+ *
+ * @param $verification_key
+ *
+ * @return bool
+ */
+function putProductsInDatabase($verification_key) {
+  $data = [];
+
+  // Load products from the cart.
+  $cart_provider = \Drupal::service('commerce_cart.cart_provider');
+  $order = $cart_provider->getCart('default');
+  $order_items = $order->order_items->referencedEntities();
+
+  // Prepare an array with product data.
+  foreach ($order_items as $order_item) {
+    $item = [];
+
+    $product_variation = $order_item->getPurchasedEntity();
+    $title = $order_item->title->value;
+    $price = $order_item->getUnitPrice();
+    $quantity = (int) $order_item->quantity->value;
+    $total_price = $price->getNumber() * $quantity;
+
+    $item['title'] = $title;
+    $item['price'] = $price->__toString();
+    $item['quantity'] = $quantity;
+    $item['total_price'] = $total_price . ' ' . $price->getCurrencyCode();
+    $item['sku'] = $product_variation->getSku();
+
+    $data[] = $item;
+  }
+  $data = json_encode($data);
+
+  $connection = \Drupal::service('database');
+  $result = $connection->insert('shareable_cart_info')
+    ->fields([
+      'verification_key' => $verification_key,
+      'data' => $data,
+    ])
+    ->execute();
+
+  return true;
+}
+
+/**
+ * Load shareable cart from the database by verification key.
+ *
+ * @param $verification_key
+ *
+ * @return mixed
+ */
+function getProductsFromDatabase($verification_key) {
+  return \Drupal::database()->select('shareable_cart_info', 'sci')
+    ->fields('sci', ['data'])
+    ->condition('sci.verification_key', $verification_key)
+    ->execute()
+    ->fetchField();
+}
