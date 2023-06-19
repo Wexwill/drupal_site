@@ -1,0 +1,11 @@
+uuid: 860057d1-3806-4b4e-b9fa-3ea62317d75b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.countries
+id: taxonomy_term.countries
+target_entity_type_id: taxonomy_term
+target_bundle: countries
+default_langcode: site_default
+language_alterable: false

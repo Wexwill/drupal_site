@@ -1,11 +1,11 @@
-uuid: c16d728a-0864-4a55-9be1-59f56ffdf01a
+uuid: 80aac303-4220-494f-9cc8-a118cfadab1c
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.landing_page
-id: node.landing_page
+    - node.type.article
+id: node.article
 target_entity_type_id: node
-target_bundle: landing_page
+target_bundle: article
 default_langcode: site_default
 language_alterable: true
