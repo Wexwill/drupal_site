@@ -1,0 +1,29 @@
+uuid: 8fbc85b3-9ed3-485c-8342-d3af00a3fed1
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - my_custom
+id: my_custom_tools
+theme: my_custom
+region: sidebar_first
+weight: -7
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Tools
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search-page

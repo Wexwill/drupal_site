@@ -1,0 +1,25 @@
+uuid: 9d14b74c-8c96-4759-a740-2f6bd9e9de5b
+langcode: en
+status: true
+dependencies:
+  module:
+    - an_task_56
+    - system
+  theme:
+    - my_custom
+id: my_custom_customblockwithmodalwindow
+theme: my_custom
+region: content
+weight: 0
+provider: null
+plugin: block_with_modal
+settings:
+  id: block_with_modal
+  label: 'Custom block with modal window'
+  label_display: visible
+  provider: an_task_56
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

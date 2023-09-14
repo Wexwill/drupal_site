@@ -1,0 +1,19 @@
+uuid: faaadfc0-6b33-46d2-b5b6-36ad2ee6b298
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_order
+    - text
+id: commerce_order.field_comment
+field_name: field_comment
+entity_type: commerce_order
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

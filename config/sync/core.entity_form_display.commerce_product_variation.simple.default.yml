@@ -5,10 +5,12 @@ dependencies:
   config:
     - commerce_product.commerce_product_variation_type.simple
     - field.field.commerce_product_variation.simple.field_images
+    - field.field.commerce_product_variation.simple.weight
     - image.style.thumbnail
   module:
     - commerce_price
     - image
+    - physical
 id: commerce_product_variation.simple.default
 targetEntityType: commerce_product_variation
 bundle: simple
@@ -63,6 +65,14 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  weight:
+    type: physical_measurement_default
+    weight: 91
+    region: content
+    settings:
+      default_unit: ''
+      allow_unit_change: true
     third_party_settings: {  }
 hidden:
   created: true

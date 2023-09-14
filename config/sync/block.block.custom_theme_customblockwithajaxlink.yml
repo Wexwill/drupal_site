@@ -1,0 +1,25 @@
+uuid: a51f0ddb-d6e6-4209-8149-caa78074cb4b
+langcode: en
+status: true
+dependencies:
+  module:
+    - an_task_55
+    - system
+  theme:
+    - custom_theme
+id: custom_theme_customblockwithajaxlink
+theme: custom_theme
+region: content
+weight: 0
+provider: null
+plugin: custom_block
+settings:
+  id: custom_block
+  label: 'Custom block with ajax link'
+  label_display: visible
+  provider: an_task_55
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

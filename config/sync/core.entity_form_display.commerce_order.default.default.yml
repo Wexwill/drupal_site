@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - commerce_order.commerce_order_type.default
+    - field.field.commerce_order.default.field_comment
+    - field.field.commerce_order.default.shipments
   module:
     - commerce_order
     - inline_entity_form
+    - text
 _core:
   default_config_hash: 7hXqpb7yxuHJYNjyPmN_vQll6jq_fl7N09Tj-PFcESU
 id: commerce_order.default.default
@@ -16,29 +19,68 @@ mode: default
 content:
   adjustments:
     type: commerce_adjustment_default
-    weight: 2
+    weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   billing_profile:
     type: commerce_billing_profile
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
+  cart:
+    type: boolean_checkbox
+    weight: 5
     region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  coupons:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_comment:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   order_items:
     type: inline_entity_form_complex
     weight: 1
+    region: content
     settings:
+      form_mode: default
       override_labels: true
       label_singular: 'order item'
       label_plural: 'order items'
       allow_new: true
-      match_operator: CONTAINS
       allow_existing: false
-      form_mode: default
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
     third_party_settings: {  }
+  shipments:
+    type: entity_reference_autocomplete
+    weight: 2
     region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   created: true
   ip_address: true

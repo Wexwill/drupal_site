@@ -1,0 +1,10 @@
+uuid: 00711dc1-d869-4d5f-aebb-333114a72f57
+langcode: en
+status: true
+dependencies: {  }
+id: brapochuta
+label: brapochuta
+traits: {  }
+locked: false
+orderItemType: default
+generateTitle: true

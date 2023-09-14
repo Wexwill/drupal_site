@@ -2,6 +2,9 @@ _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
   address: 0
+  admin_toolbar: 0
+  admin_toolbar_tools: 0
+  an_custom_commerce: 0
   an_task_10: 0
   an_task_113: 0
   an_task_118: 0
@@ -44,6 +47,7 @@ module:
   dblog: 0
   devel: 0
   devel_generate: 0
+  devel_generate_commerce: 0
   dynamic_page_cache: 0
   editor: 0
   entity: 0
@@ -80,6 +84,7 @@ module:
   search_api: 0
   search_api_db: 0
   search_api_solr: 0
+  search_api_solr_admin: 0
   serialization: 0
   shortcut: 0
   state_machine: 0
@@ -101,4 +106,6 @@ theme:
   claro: 0
   bartik: 0
   seven: 0
+  custom_theme: 0
+  my_custom: 0
 profile: standard

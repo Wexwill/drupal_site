@@ -1,0 +1,19 @@
+uuid: 60268054-c39d-47a8-adbc-609482ab6ff8
+langcode: en
+status: true
+dependencies: {  }
+id: test_payment
+label: 'test payment'
+weight: null
+plugin: manual
+configuration:
+  display_label: Manual
+  mode: n/a
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+  instructions:
+    value: 'test payment'
+    format: plain_text
+conditions: {  }
+conditionOperator: AND

@@ -1,0 +1,30 @@
+uuid: 9191f674-3625-4b81-a8fa-a3ef01f01d88
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.commerce_activity
+  module:
+    - system
+    - views
+  theme:
+    - my_custom
+id: views_block__commerce_activity_block_1
+theme: my_custom
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_block:commerce_activity-block_1'
+settings:
+  id: 'views_block:commerce_activity-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /products

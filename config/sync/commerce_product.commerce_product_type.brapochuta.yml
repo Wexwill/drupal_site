@@ -1,0 +1,13 @@
+uuid: 10c7b192-1515-44a8-8d58-1fc3da9c3d54
+langcode: en
+status: true
+dependencies: {  }
+id: brapochuta
+label: brapochuta
+traits: {  }
+locked: false
+description: ''
+variationType: brapochuta
+variationTypes: {  }
+multipleVariations: true
+injectVariationFields: true

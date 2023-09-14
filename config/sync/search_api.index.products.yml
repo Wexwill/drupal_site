@@ -1,14 +1,15 @@
-uuid: 7777b187-86c5-4f24-835e-3579365e73b7
+uuid: a215471e-c500-491a-a9d0-776fbec99aef
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_book_genre
+    - field.storage.commerce_product.field_product_categories
     - search_api.server.solr
   module:
     - search_api_solr
+    - commerce_product
+    - taxonomy
     - search_api
-    - node
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -53,25 +54,72 @@ third_party_settings:
       include_language_independent: true
       specific_languages:
         en: '0'
-id: index
-name: index
+        fr: '0'
+        de: '0'
+        en-gb: '0'
+id: products
+name: Products
 description: ''
 read_only: false
 field_settings:
-  field_book_genre:
-    label: 'Book genre'
-    datasource_id: 'entity:node'
-    property_path: field_book_genre
-    type: string
+  created:
+    label: 'Created for sort'
+    datasource_id: 'entity:commerce_product'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - commerce_product
+  name:
+    label: 'Product categories'
+    datasource_id: 'entity:commerce_product'
+    property_path: 'field_product_categories:entity:name'
+    type: text
     dependencies:
       config:
-        - field.storage.node.field_book_genre
+        - field.storage.commerce_product.field_product_categories
+      module:
+        - taxonomy
+  number:
+    label: 'Price for sort'
+    datasource_id: 'entity:commerce_product'
+    property_path: 'variations:entity:price:number'
+    type: decimal
+    dependencies:
+      module:
+        - commerce_product
+  status:
+    label: Published
+    datasource_id: 'entity:commerce_product'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - commerce_product
+  title:
+    label: 'Title for search'
+    datasource_id: 'entity:commerce_product'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - commerce_product
+  title_1:
+    label: 'Title for sort'
+    datasource_id: 'entity:commerce_product'
+    property_path: title
+    type: integer
+    dependencies:
+      module:
+        - commerce_product
 datasource_settings:
-  'entity:node':
+  'entity:commerce_product':
     bundles:
       default: false
       selected:
-        - page
+        - brapochuta
+        - clothing
+        - uauodre
     languages:
       default: true
       selected: {  }

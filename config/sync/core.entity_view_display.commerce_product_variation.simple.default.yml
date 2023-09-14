@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_variation_type.simple
     - field.field.commerce_product_variation.simple.field_images
+    - field.field.commerce_product_variation.simple.weight
   module:
     - commerce_price
     - image
@@ -48,3 +49,4 @@ hidden:
   search_api_excerpt: true
   sku: true
   title: true
+  weight: true

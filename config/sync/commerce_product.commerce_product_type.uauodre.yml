@@ -1,0 +1,13 @@
+uuid: 7079433e-ff8d-489b-90d8-9ce731bfa854
+langcode: en
+status: true
+dependencies: {  }
+id: uauodre
+label: uauodre
+traits: {  }
+locked: false
+description: ''
+variationType: uauodre
+variationTypes: {  }
+multipleVariations: true
+injectVariationFields: true

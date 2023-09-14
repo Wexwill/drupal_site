@@ -12,7 +12,7 @@ field_name: field_color
 entity_type: commerce_product_attribute_value
 bundle: color
 label: Color
-description: ''
+description: 'Enter a hex color code'
 required: true
 translatable: false
 default_value: {  }

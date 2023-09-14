@@ -1,0 +1,10 @@
+uuid: dc3cc353-6e1f-48df-91ab-f78fc8bd353a
+langcode: en
+status: true
+dependencies: {  }
+id: uauodre
+label: uauodre
+traits: {  }
+locked: false
+orderItemType: default
+generateTitle: true
