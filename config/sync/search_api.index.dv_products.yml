@@ -1,10 +1,10 @@
-uuid: a215471e-c500-491a-a9d0-776fbec99aef
+uuid: 34e72892-53fc-4233-ac77-b0dc7c2e2ee4
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - field.storage.commerce_product.field_product_categories
-    - search_api.server.solr
+    - search_api.server.db_server
   module:
     - search_api_solr
     - commerce_product
@@ -57,8 +57,8 @@ third_party_settings:
         fr: '0'
         de: '0'
         en-gb: '0'
-id: products
-name: Products
+id: dv_products
+name: 'DB roducts'
 description: ''
 read_only: false
 field_settings:
@@ -138,4 +138,4 @@ options:
   cron_limit: 50
   index_directly: true
   track_changes_in_references: true
-server: solr
+server: db_server
