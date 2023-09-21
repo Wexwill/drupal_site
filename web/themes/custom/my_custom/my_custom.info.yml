@@ -6,7 +6,7 @@ core_version_requirement: ^8 || ^9 || ^10
 base theme: bartik
 # Defines libraries group in which we can add CSS/JS.
 libraries:
-  - custom_theme/global-styling
+  - my_custom/global-styling
 regions:
   header: Header
   primary_menu: 'Primary menu'

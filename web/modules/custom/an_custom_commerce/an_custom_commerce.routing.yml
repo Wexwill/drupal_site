@@ -1,0 +1,6 @@
+an_custom_commerce.change_quantity:
+  path: '/change-quantity/{quantity}/{purchased_entity}'
+  defaults:
+    _controller: '\Drupal\an_custom_commerce\Controller\ChangeQuantityController::openModalForm'
+  requirements:
+    _permission: 'access content'
