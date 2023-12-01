@@ -36,7 +36,6 @@
         "drupal/migrate_source_csv": "^3.5",
         "drupal/migrate_tools": "^6.0",
         "drupal/paragraphs": "^1.15",
-        "drupal/permissions_by_term": "^3.1",
         "drupal/restui": "^1.21",
         "drupal/search_api": "^1.26",
         "drupal/search_api_solr": "^4.2",
@@ -102,11 +101,7 @@
             ]
         },
         "enable-patching": true,
-        "patches": {
-            "drupal/permissions_by_term": {
-                "Allow View access per bundle for each Taxonomy term": "https://www.drupal.org/files/issues/2020-12-04/allow-access-per-bundle-3186361-4.patch"
-            }
-        },
+        "patches": {},
         "drupal-core-project-message": {
             "include-keys": [
                 "homepage",
