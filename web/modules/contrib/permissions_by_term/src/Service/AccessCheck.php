@@ -113,6 +113,10 @@ class AccessCheck {
       return TRUE;
     }
 
+    if ($this->isNodeViewAllowedByBundle($node) && $node->isPublished()) {
+      return TRUE;
+    }
+
     foreach ($terms as $term) {
       $termInfo = Term::load($term->tid);
 
@@ -234,6 +238,57 @@ class AccessCheck {
     }
 
     return FALSE;
+  }
+
+  /**
+   * @param NodeInterface $node
+   * @param int $uid
+   *
+   * @return bool
+   */
+  public function isNodeViewAllowedByBundle($node) {
+    /* @var \Drupal\permissions_by_term\Service\AccessStorage $access_storage */
+    $access_storage = \Drupal::service('permissions_by_term.access_storage');
+
+    $tids = $access_storage->getTidsByNid($node->id());
+    $langcode = $node->language()->getId();
+    $bundle = $node->bundle();
+
+    // If there are no terms return
+    if (!$tids) {
+      return TRUE;
+    }
+    foreach ($tids as $tid) {
+      if ($this->isAnyPermissionSetForTerm($tid, $langcode)) {
+        $access_allowed = $this->isTermAllowedByBundle($tid, $bundle, $langcode);
+
+        if (!$access_allowed) {
+          return FALSE;
+        }
+      }
+    }
+
+    return TRUE;
+  }
+
+  /**
+   * @param int    $tid
+   * @param string $bundle
+   * @param string $langcode
+   *
+   * @return bool
+   */
+  public function isTermAllowedByBundle($tid, $bundle, $langcode) {
+    $query_result = $this->database->query("SELECT bundle FROM {permissions_by_term_bundle} WHERE tid = :tid AND bundle = :bundle AND langcode = :langcode",
+      [':tid' => $tid, ':bundle' => $bundle, ':langcode' => $langcode])->fetchField();
+
+    if (!empty($query_result)) {
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
+
   }
 
   public function handleNode(Node $node, string $langcode): AccessResult {

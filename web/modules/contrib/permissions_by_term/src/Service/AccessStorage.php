@@ -83,6 +83,23 @@ class AccessStorage {
   }
 
   /**
+   * Gets submitted bundles with granted access from form.
+   *
+   * @return array
+   *   An array with chosen bundles.
+   */
+  public function getSubmittedBundlesGrantedAccess(FormStateInterface $form_state) {
+    $aBundles       = $form_state->getValue('access')['node_bundle'];
+    $aChosenBundles = [];
+    foreach ($aBundles as $sBundle => $value) {
+      if ($value !== 0) {
+        $aChosenBundles[] = $sBundle;
+      }
+    }
+    return $aChosenBundles;
+  }
+
+  /**
    * @param FormState $form_state
    */
   public function checkIfUsersExists(FormState $form_state) {
@@ -213,6 +230,21 @@ class AccessStorage {
   }
 
   /**
+   * @param int $term_id
+   * @param string $langcode
+   *
+   * @return array
+   */
+  public function getBundleTermPermissionsByTid($term_id, $langcode) {
+    return $this->database->select('permissions_by_term_bundle', 'pb')
+      ->condition('tid', $term_id)
+      ->condition('langcode', $langcode)
+      ->fields('pb', ['bundle'])
+      ->execute()
+      ->fetchCol();
+  }
+
+  /**
    * @param string $sUsername
    *
    * @return int
@@ -284,6 +316,22 @@ class AccessStorage {
   }
 
   /**
+   * Delete access storage when a bundle is removed.
+   *
+   * @param array $aBundleAccessRemove
+   * @param int   $term_id
+   */
+  public function deleteTermPermissionsByBundle($aBundleAccessRemove, $term_id, $langcode) {
+    foreach ($aBundleAccessRemove as $sBundle) {
+      $this->database->delete('permissions_by_term_bundle')
+        ->condition('bundle', $sBundle, '=')
+        ->condition('tid', $term_id, '=')
+        ->condition('langcode', $langcode, '=')
+        ->execute();
+    }
+  }
+
+  /**
    * @param int $userId
    */
   public function deleteAllTermPermissionsByUserId($userId) {
@@ -304,6 +352,10 @@ class AccessStorage {
       ->execute();
 
     $this->database->delete('permissions_by_term_role')
+      ->condition('tid', $term_id, '=')
+      ->execute();
+
+    $this->database->delete('permissions_by_term_bundle')
       ->condition('tid', $term_id, '=')
       ->execute();
   }
@@ -351,6 +403,27 @@ class AccessStorage {
       if (empty($queryResult)) {
         $this->database->insert('permissions_by_term_role')
           ->fields(['tid', 'rid', 'langcode'], [$term_id, $sRoleIdGrantedAccess, $langcode])
+          ->execute();
+      }
+    }
+  }
+
+  /**
+   * @param array  $BundlesGrantedAccess
+   * @param int    $term_id
+   * @param string $langcode
+   *
+   * @throws \Exception
+   */
+  public function addTermPermissionsByBundle($BundlesGrantedAccess, $term_id, $langcode = '') {
+    $langcode = ($langcode === '') ? \Drupal::languageManager()->getCurrentLanguage()->getId() : $langcode;
+
+    foreach ($BundlesGrantedAccess as $sBundle) {
+      $queryResult = $this->database->query("SELECT bundle FROM {permissions_by_term_bundle} WHERE tid = :tid AND bundle = :bundle AND langcode = :langcode",
+        [':tid' => $term_id, ':bundle' => $sBundle, ':langcode' => $langcode])->fetchField();
+      if (empty($queryResult)) {
+        $this->database->insert('permissions_by_term_bundle')
+          ->fields(['tid', 'bundle', 'langcode'], [$term_id, $sBundle, $langcode])
           ->execute();
       }
     }
@@ -407,9 +480,13 @@ class AccessStorage {
     $aExistingRoleIdsGrantedAccess = $this->getRoleTermPermissionsByTid($term_id, $langcode);
     $aSubmittedRolesGrantedAccess  = $this->getSubmittedRolesGrantedAccess($formState);
 
+    $aExistingBundlesGrantedAccess  = $this->getBundleTermPermissionsByTid($term_id, $langcode);
+    $aSubmittedBundlesGrantedAccess = $this->getSubmittedBundlesGrantedAccess($formState);
+
     $aRet = $this->getPreparedDataForDatabaseQueries($aExistingUserPermissions,
       $aSubmittedUserIdsGrantedAccess, $aExistingRoleIdsGrantedAccess,
-      $aSubmittedRolesGrantedAccess);
+      $aSubmittedRolesGrantedAccess, $aExistingBundlesGrantedAccess,
+      $aSubmittedBundlesGrantedAccess);
 
     $this->deleteTermPermissionsByUserIds($aRet['UserIdPermissionsToRemove'], $term_id, $langcode);
     $this->addTermPermissionsByUserIds($aRet['UserIdPermissionsToAdd'], $term_id, $langcode);
@@ -417,6 +494,11 @@ class AccessStorage {
     $this->deleteTermPermissionsByRoleIds($aRet['UserRolePermissionsToRemove'], $term_id, $langcode);
     if (!empty($aRet['aRoleIdPermissionsToAdd'])) {
       $this->addTermPermissionsByRoleIds($aRet['aRoleIdPermissionsToAdd'], $term_id, $langcode);
+    }
+
+    $this->deleteTermPermissionsByBundle($aRet['BundlePermissionsToRemove'], $term_id, $langcode);
+    if (!empty($aRet['aBundlePermissionsToAdd'])) {
+      $this->addTermPermissionsByBundle($aRet['aBundlePermissionsToAdd'], $term_id, $langcode);
     }
 
     return $aRet;
@@ -492,7 +574,9 @@ class AccessStorage {
   public function getPreparedDataForDatabaseQueries($aExistingUserPermissions,
                                                     $aSubmittedUserIdsGrantedAccess,
                                                     $aExistingRoleIdsGrantedAccess,
-                                                    $aSubmittedRolesGrantedAccess) {
+                                                    $aSubmittedRolesGrantedAccess,
+                                                    $aExistingBundlesGrantedAccess,
+                                                    $aSubmittedBundlesGrantedAccess) {
     // Fill array with user ids to remove permission.
     $aRet['UserIdPermissionsToRemove'] =
       $this->getArrayItemsToRemove($aExistingUserPermissions,
@@ -512,6 +596,16 @@ class AccessStorage {
     $aRet['aRoleIdPermissionsToAdd'] =
       $this->getArrayItemsToAdd($aSubmittedRolesGrantedAccess,
         $aExistingRoleIdsGrantedAccess);
+
+    // Fill array with bundles to remove permission.
+    $aRet['BundlePermissionsToRemove'] =
+      $this->getArrayItemsToRemove($aExistingBundlesGrantedAccess,
+        $aSubmittedBundlesGrantedAccess);
+
+    // Fill array with bundles to add permission.
+    $aRet['aBundlePermissionsToAdd'] =
+      $this->getArrayItemsToAdd($aSubmittedBundlesGrantedAccess,
+        $aExistingBundlesGrantedAccess);
 
     return $aRet;
   }

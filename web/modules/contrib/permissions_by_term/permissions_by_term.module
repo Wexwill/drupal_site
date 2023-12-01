@@ -223,6 +223,23 @@ function permissions_by_term_form_taxonomy_term_form_alter(&$form, FormStateInte
       '#weight'        => 5,
     ];
 
+    $nodeBundles = \Drupal::service('entity_type.bundle.info')->getBundleInfo('node');
+    $nodeBundlesWithLabels = [];
+    foreach ($nodeBundles as $key => $bundle) {
+      $nodeBundlesWithLabels[$key] = $bundle['label'] . ' (' . $key . ')';
+    }
+    $defaultBundles = $access_storage->getBundleTermPermissionsByTid($termId, $langcode);
+
+    $form['access']['node_bundle'] = [
+      '#type'          => 'checkboxes',
+      '#title'         => t('View only - Allowed bundles'),
+      '#description'   => t('Select bundles for which the View operation will not managed by the restrictions above.'),
+      '#default_value' => $defaultBundles,
+      '#options'       => $nodeBundlesWithLabels,
+      '#multiple'      => FALSE,
+      '#weight'        => 5,
+    ];
+
     $form['#validate'][] = 'permissions_by_term_validate';
     $form['actions']['submit']['#submit'][] = 'permissions_by_term_submit';
   }
@@ -406,6 +423,10 @@ function permissions_by_term_node_grants(AccountInterface $account, $op) {
 function permissions_by_term_node_access(NodeInterface $node, $op, AccountInterface $account) {
   /* @var \Drupal\permissions_by_term\Service\AccessCheck $accessCheck */
   $accessCheck = \Drupal::service('permissions_by_term.access_check');
+
+  if ($op === 'view' && $accessCheck->isNodeViewAllowedByBundle($node)) {
+    return AccessResult::allowed();
+  }
 
   $accessCheck->dispatchDeniedEventOnRestricedAccess($node, $node->language()->getId());
 }

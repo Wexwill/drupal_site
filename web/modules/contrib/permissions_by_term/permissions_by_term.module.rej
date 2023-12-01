@@ -1,0 +1,35 @@
+--- permissions_by_term.module
++++ permissions_by_term.module
+@@ -5,9 +5,8 @@
+  * Allows access to terms in a vocabulary to be limited by user or role.
+  */
+ 
+-use Drupal\Component\Utility\Tags;
++use Drupal\Core\Access\AccessResult;
+ use Drupal\Core\Access\AccessResultForbidden;
+-use Drupal\Core\Entity\Element\EntityAutocomplete;
+ use Drupal\Core\Entity\EntityInterface;
+ use Drupal\Core\Form\FormState;
+ use Drupal\Core\Form\FormStateInterface;
+@@ -426,7 +446,7 @@ function permissions_by_term_node_access_records(\Drupal\node\NodeInterface $nod
+   foreach ($access_storage->getTidsByNid($node->id()) as $tid) {
+     /* @var \Drupal\permissions_by_term\Service\AccessCheck $access_check_service */
+     $access_check_service = \Drupal::service('permissions_by_term.access_check');
+-    if($node->language()->getId() == 'und'){
++    if ($node->language()->getId() == 'und') {
+       // Current system default language
+       $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+     }
+@@ -434,6 +454,12 @@ function permissions_by_term_node_access_records(\Drupal\node\NodeInterface $nod
+       $language = $node->language()->getId();
+     }
+     if ($access_check_service->isAnyPermissionSetForTerm($tid, $language)) {
++      // Check if the node bundle is allowed for View
++      $allow_view_access = $access_check_service->isNodeViewAllowedByBundle($node);
++      if ($allow_view_access && $node->isPublished()) {
++        return;
++      }
++
+       break;
+     }
+   }

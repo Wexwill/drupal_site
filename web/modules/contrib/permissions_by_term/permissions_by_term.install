@@ -15,7 +15,7 @@ function permissions_by_term_schema() {
 
   $schema = [];
 
-  // Specifications for tabe 'permissions_by_term_user'.
+  // Specifications for table 'permissions_by_term_user'.
   $schema['permissions_by_term_user'] = [
     'description' => "Stores the tid's to which a user has permission by his uid.",
     'fields'      => [
@@ -43,7 +43,7 @@ function permissions_by_term_schema() {
     ],
   ];
 
-  // Specifications for tabe 'permissions_by_term_role'.
+  // Specifications for table 'permissions_by_term_role'.
   $schema['permissions_by_term_role'] = [
     'description' => "Stores the tid's to which user's are allowed to by rid.",
     'fields' => [
@@ -68,6 +68,30 @@ function permissions_by_term_schema() {
       'tid',
       'rid',
       'langcode',
+    ],
+  ];
+
+  $schema['permissions_by_term_bundle'] = [
+    'description' => "Stores the tid's to which a bundle has View permission.",
+    'fields' => [
+      'tid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'bundle' => [
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 128,
+      ],
+      'langcode' => [
+        'type' => 'varchar_ascii',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => [
     ],
   ];
 
@@ -221,4 +245,40 @@ function permissions_by_term_update_9001() {
   $schema->addPrimaryKey('permissions_by_term_role', ['tid', 'rid', 'langcode']);
   $schema->dropPrimaryKey('permissions_by_term_user');
   $schema->addPrimaryKey('permissions_by_term_user', ['tid', 'uid', 'langcode']);
+}
+
+/**
+ * Adds new table "permissions_by_term_bundle".
+ */
+function permissions_by_term_update_8154() {
+  $database = \Drupal::database();
+  $schema = $database->schema();
+
+  $table_name = 'permissions_by_term_bundle';
+  $table_schema = [
+    'description' => "Stores the tid's to which a bundle has View permission disabled.",
+    'fields' => [
+      'tid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'bundle' => [
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 128,
+      ],
+      'langcode' => [
+        'type' => 'varchar_ascii',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => [
+    ],
+  ];
+
+  $schema->createTable($table_name, $table_schema);
+
 }
