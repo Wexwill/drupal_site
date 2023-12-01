@@ -1,0 +1,83 @@
+diff --git a/src/Form/SettingsForm.php b/src/Form/SettingsForm.php
+index 0f2c5a2..a2967b3 100644
+--- a/src/Form/SettingsForm.php
++++ b/src/Form/SettingsForm.php
+@@ -82,6 +82,13 @@ overall website and you are using a warmed page cache, then it is recommended to
+       '#default_value' => \Drupal::config('permissions_by_term.settings')->get('disable_node_access_records'),
+     ];
+
++    $form['skip_node_access_taxonomy_term_access'] = [
++      '#type'          => 'checkbox',
++      '#title'         => t('Skip access check'),
++      '#description'   => t('Skip access check when view node page and taxonomy term page'),
++      '#default_value' => \Drupal::config('permissions_by_term.settings')->get('skip_node_access_taxonomy_term_access'),
++    ];
++
+     $form['target_bundles'] = [
+       '#type' => 'checkboxes',
+       '#title' => $this->t('Limit by taxonomy vocabularies'),
+@@ -136,6 +143,11 @@ overall website and you are using a warmed page cache, then it is recommended to
+       ->set('disable_node_access_records', $form_state->getValue('disable_node_access_records'))
+       ->save();
+
++    \Drupal::configFactory()
++      ->getEditable('permissions_by_term.settings')
++      ->set('skip_node_access_taxonomy_term_access', $form_state->getValue('skip_node_access_taxonomy_term_access'))
++      ->save();
++
+     $bundles = array_filter($form_state->getValue('target_bundles'));
+     $this->configFactory
+       ->getEditable('permissions_by_term.settings')
+diff --git a/src/Listener/KernelEventListener.php b/src/Listener/KernelEventListener.php
+index 520a70d..020ba91 100644
+--- a/src/Listener/KernelEventListener.php
++++ b/src/Listener/KernelEventListener.php
+@@ -57,6 +57,11 @@ class KernelEventListener implements EventSubscriberInterface
+    */
+   private $disabledNodeAccessRecords;
+
++  /**
++   * @var bool
++   */
++  private $skipNodeAccessTaxonomyTermAccess;
++
+   public function __construct(
+     AccessCheck $accessCheck,
+     AccessStorage $accessStorage,
+@@ -72,6 +77,7 @@ class KernelEventListener implements EventSubscriberInterface
+     $this->eventDispatcher = $eventDispatcher;
+     $this->pageCacheKillSwitch = $pageCacheKillSwitch;
+     $this->disabledNodeAccessRecords = $configFactory->get('permissions_by_term.settings')->get('disable_node_access_records');
++    $this->skipNodeAccessTaxonomyTermAccess = $configFactory->get('permissions_by_term.settings')->get('skip_node_access_taxonomy_term_access');
+   }
+
+   /**
+@@ -84,7 +90,9 @@ class KernelEventListener implements EventSubscriberInterface
+
+       $this->handleAccessToTermAutocompleteLists($event);
+
+-      $this->handleAccessToTaxonomyTermViewsPages();
++      if (!$this->skipNodeAccessTaxonomyTermAccess) {
++        $this->handleAccessToTaxonomyTermViewsPages();
++      }
+
+     }
+   }
+@@ -162,7 +170,17 @@ class KernelEventListener implements EventSubscriberInterface
+     // Restricts access to nodes (views/edit).
+     if ($this->canRequestGetNode($event->getRequest())) {
+       $node = $event->getRequest()->attributes->get('node');
+-      if (!$this->accessCheckService->canUserAccessByNode($node, false, $this->accessStorageService->getLangCode($node->id()))) {
++      if ($this->skipNodeAccessTaxonomyTermAccess) {
++        $_route = $event->getRequest()->attributes->get('_route');
++        if ($_route == 'entity.node.canonical') {
++          $skip = true;
++        } else {
++          $skip = false;
++        }
++      } else {
++        $skip = false;
++      }
++      if (!$skip && !$this->accessCheckService->canUserAccessByNode($node, false, $this->accessStorageService->getLangCode($node->id()))) {
+         $accessDeniedEvent = new PermissionsByTermDeniedEvent($node->id());
+         $this->eventDispatcher->dispatch(PermissionsByTermDeniedEvent::NAME, $accessDeniedEvent);

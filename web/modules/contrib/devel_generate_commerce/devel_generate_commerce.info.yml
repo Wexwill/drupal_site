@@ -1,0 +1,23 @@
+type: module
+name: 'Devel Generate Commerce'
+description: 'Generate dummy commerce products, product types, product variations, orders'
+package: Development
+core_version_requirement: ^8.8 || ^9 || ^10
+
+dependencies:
+  - drupal:commerce
+  - drupal:devel
+  - drupal:devel_generate
+  - drupal:commerce_order
+  - drupal:commerce_product
+  - drupal:commerce_checkout
+  - drupal:commerce_store
+  - drupal:commerce_price
+
+tags:
+ - developer
+
+# Information added by Drupal.org packaging script on 2023-02-17
+version: '1.1.0'
+project: 'devel_generate_commerce'
+datestamp: 1676671980

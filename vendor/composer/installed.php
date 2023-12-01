@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3f0a0c7445f376f3d86baaa812ca83e438cdcc2e',
+        'reference' => 'adf054e0e2849f9b92e7d9c08301af199711c7d7',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -156,6 +156,15 @@
             'reference' => '9ef08d471573d6a56405b06ef6830dd70c883072',
             'dev_requirement' => false,
         ),
+        'cweagans/composer-patches' => array(
+            'pretty_version' => '1.7.3',
+            'version' => '1.7.3.0',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../cweagans/composer-patches',
+            'aliases' => array(),
+            'reference' => 'e190d4466fe2b103a55467dfa83fc2fecfcaf2db',
+            'dev_requirement' => false,
+        ),
         'dealerdirect/phpcodesniffer-composer-installer' => array(
             'pretty_version' => 'v0.7.2',
             'version' => '0.7.2.0',
@@ -268,6 +277,15 @@
             'install_path' => __DIR__ . '/../../web/modules/contrib/address',
             'aliases' => array(),
             'reference' => '8.x-1.11',
+            'dev_requirement' => false,
+        ),
+        'drupal/admin_toolbar' => array(
+            'pretty_version' => '3.4.1',
+            'version' => '3.4.1.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/admin_toolbar',
+            'aliases' => array(),
+            'reference' => '3.4.1',
             'dev_requirement' => false,
         ),
         'drupal/aggregator' => array(
@@ -421,12 +439,12 @@
             'dev_requirement' => false,
         ),
         'drupal/commerce_shipping' => array(
-            'pretty_version' => '2.4.0',
-            'version' => '2.4.0.0',
+            'pretty_version' => '2.6.0',
+            'version' => '2.6.0.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/commerce_shipping',
             'aliases' => array(),
-            'reference' => '8.x-2.4',
+            'reference' => '8.x-2.6',
             'dev_requirement' => false,
         ),
         'drupal/commerce_store' => array(
@@ -685,6 +703,15 @@
             'install_path' => __DIR__ . '/../../web/modules/contrib/devel',
             'aliases' => array(),
             'reference' => '4.1.5',
+            'dev_requirement' => false,
+        ),
+        'drupal/devel_generate_commerce' => array(
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/devel_generate_commerce',
+            'aliases' => array(),
+            'reference' => '1.1.0',
             'dev_requirement' => false,
         ),
         'drupal/dynamic_page_cache' => array(
@@ -981,6 +1008,15 @@
                 0 => '9.4.2',
             ),
         ),
+        'drupal/permissions_by_term' => array(
+            'pretty_version' => '3.1.29',
+            'version' => '3.1.29.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/permissions_by_term',
+            'aliases' => array(),
+            'reference' => '3.1.29',
+            'dev_requirement' => false,
+        ),
         'drupal/pgsql' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -1023,7 +1059,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3f0a0c7445f376f3d86baaa812ca83e438cdcc2e',
+            'reference' => 'adf054e0e2849f9b92e7d9c08301af199711c7d7',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(

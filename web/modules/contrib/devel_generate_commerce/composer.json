@@ -1,0 +1,34 @@
+{
+  "name": "drupal/devel_generate_commerce",
+  "description": "Generate dummy commerce products, product types, product variations, orders",
+  "type": "drupal-module",
+  "homepage": "http://drupal.org/project/devel_generate_commerce",
+  "authors": [
+    {
+      "name": "Andrei Vesterli (andrei.vesterli)",
+      "email": "vesterli.andrei@gmail.com",
+      "homepage": "https://github.com/weitzman",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/devel_generate_commerce",
+    "source": "http://cgit.drupalcode.org/devel_generate_commerce"
+  },
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "require": {
+    "drupal/commerce": "^2.30",
+    "drupal/devel": "^4.1 || ^5.0"
+  },
+  "require-dev": {
+    "drush/drush": "^10 || ^11"
+  },
+  "extra": {
+    "drush": {
+      "services": {
+        "drush.services.yml": "^9 || ^10 || ^11"
+      }
+    }
+  }
+}
