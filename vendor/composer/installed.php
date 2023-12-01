@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6b68d0eb318386e22746eef746bbef630155e879',
+        'reference' => 'bc742bf712812c090f7593bd576e2452b1003b79',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -1008,6 +1008,15 @@
                 0 => '9.4.2',
             ),
         ),
+        'drupal/permissions_by_term' => array(
+            'pretty_version' => '3.1.29',
+            'version' => '3.1.29.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/permissions_by_term',
+            'aliases' => array(),
+            'reference' => '3.1.29',
+            'dev_requirement' => false,
+        ),
         'drupal/pgsql' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -1050,7 +1059,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6b68d0eb318386e22746eef746bbef630155e879',
+            'reference' => 'bc742bf712812c090f7593bd576e2452b1003b79',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
