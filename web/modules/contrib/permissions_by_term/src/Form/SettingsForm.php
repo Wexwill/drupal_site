@@ -89,6 +89,19 @@ overall website and you are using a warmed page cache, then it is recommended to
       '#default_value' => $this->config('permissions_by_term.settings')->get('only_parents') ?? false
     ];
 
+    $form['allow_viewing'] = [
+      '#type'          => 'checkbox',
+      '#title'         => t('Allow all viewing'),
+      '#description'   => t('This mode makes Permissions by Term not effect the viewing of nodes and terms (will effect editing and deleting only).
+<br />Can only be used if <em>Disable node access records</em> is set.'),
+      '#default_value' => \Drupal::config('permissions_by_term.settings')->get('allow_viewing'),
+      '#states' => [
+        'visible' => [
+          ':input[name="disable_node_access_records"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
     $form['target_bundles'] = [
       '#type'          => 'checkboxes',
       '#title'         => $this->t('Limit by taxonomy vocabularies'),
@@ -141,6 +154,16 @@ overall website and you are using a warmed page cache, then it is recommended to
     $this->configFactory
       ->getEditable('permissions_by_term.settings')
       ->set('disable_node_access_records', $form_state->getValue('disable_node_access_records'))
+      ->save();
+
+    $allow_viewing = FALSE;
+    if ($form_state->getValue('disable_node_access_records')) {
+      // Only settable if "disable_node_access_records" is also set.
+      $allow_viewing = $form_state->getValue('allow_viewing');
+    }
+    \Drupal::configFactory()
+      ->getEditable('permissions_by_term.settings')
+      ->set('allow_viewing', $allow_viewing)
       ->save();
 
     $bundles = array_filter($form_state->getValue('target_bundles'));

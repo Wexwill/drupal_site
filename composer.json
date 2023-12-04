@@ -102,7 +102,11 @@
             ]
         },
         "enable-patching": true,
-        "patches": {},
+        "patches": {
+            "drupal/permissions_by_term": {
+                "Extend permissions by edit and create permissions for related nodes": "patches/permissions_by_term/access_for_view_nodes.patch"
+            }
+        },
         "drupal-core-project-message": {
             "include-keys": [
                 "homepage",

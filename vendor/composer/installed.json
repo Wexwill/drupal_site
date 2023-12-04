@@ -3951,6 +3951,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Extend permissions by edit and create permissions for related nodes": "patches/permissions_by_term/access_for_view_nodes.patch"
                 }
             },
             "installation-source": "dist",

@@ -57,6 +57,11 @@ class KernelEventListener implements EventSubscriberInterface
    */
   private $disabledNodeAccessRecords;
 
+  /**
+   * @var bool
+   */
+  private $allowViewing;
+
   public function __construct(
     AccessCheck $accessCheck,
     AccessStorage $accessStorage,
@@ -72,6 +77,7 @@ class KernelEventListener implements EventSubscriberInterface
     $this->eventDispatcher = $eventDispatcher;
     $this->pageCacheKillSwitch = $pageCacheKillSwitch;
     $this->disabledNodeAccessRecords = $configFactory->get('permissions_by_term.settings')->get('disable_node_access_records');
+    $this->allowViewing = $configFactory->get('permissions_by_term.settings')->get('allow_viewing');
   }
 
   /**
@@ -148,7 +154,7 @@ class KernelEventListener implements EventSubscriberInterface
 
   private function handleAccessToTaxonomyTermViewsPages(): void {
     $url_object = \Drupal::service('path.validator')->getUrlIfValid(\Drupal::service('path.current')->getPath());
-    if ($url_object instanceof Url && $url_object->isRouted() && $url_object->getRouteName() === 'entity.taxonomy_term.canonical') {
+    if ($url_object instanceof Url && $url_object->isRouted() && $url_object->getRouteName() === 'entity.taxonomy_term.canonical' && !$this->allowViewing) {
       $route_parameters = $url_object->getrouteParameters();
       $termLangcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
       if (!$this->accessCheckService->isAccessAllowedByDatabase($route_parameters['taxonomy_term'], \Drupal::currentUser()->id(), $termLangcode)) {
@@ -160,6 +166,11 @@ class KernelEventListener implements EventSubscriberInterface
 
   private function handleAccessToNodePages(RequestEvent $event): void {
     // Restricts access to nodes (views/edit).
+    $route_name = $event->getRequest()->get('_route');
+    if ($this->allowViewing && $route_name == 'entity.node.canonical') {
+      // Allow viewing.
+      return;
+    }
     if ($this->canRequestGetNode($event->getRequest())) {
       $node = $event->getRequest()->attributes->get('node');
       if (!$this->accessCheckService->canUserAccessByNode($node, false, $this->accessStorageService->getLangCode($node->id()))) {
