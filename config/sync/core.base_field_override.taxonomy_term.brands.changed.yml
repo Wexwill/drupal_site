@@ -1,0 +1,18 @@
+uuid: bccf21ad-3eb0-4ef4-bfa3-451e6450e4ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.brands
+id: taxonomy_term.brands.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: brands
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,18 @@
+uuid: edbcaeaf-3e09-4e81-97dc-29e25b2be859
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.test
+id: taxonomy_term.test.name
+field_name: name
+entity_type: taxonomy_term
+bundle: test
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

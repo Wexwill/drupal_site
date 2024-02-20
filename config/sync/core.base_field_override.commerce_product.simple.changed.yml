@@ -1,0 +1,18 @@
+uuid: eaf0b365-6798-44a2-a359-cf7ce2b5cf0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.simple
+id: commerce_product.simple.changed
+field_name: changed
+entity_type: commerce_product
+bundle: simple
+label: Changed
+description: 'The time when the product was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

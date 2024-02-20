@@ -1,0 +1,13 @@
+display:
+  default:
+    display_options:
+      filters:
+        langcode:
+          expose:
+            label: Sprache
+  page_unapproved:
+    display_options:
+      filters:
+        langcode:
+          expose:
+            label: Sprache

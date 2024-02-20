@@ -1,0 +1,186 @@
+uuid: a558381c-2082-41a6-b6ce-de201e7290f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - node.type.article
+    - node.type.landing_page
+    - node.type.page
+  module:
+    - comment
+    - commerce
+    - commerce_order
+    - commerce_payment
+    - commerce_price
+    - commerce_product
+    - commerce_promotion
+    - commerce_shipping
+    - commerce_store
+    - commerce_tax
+    - config
+    - contact
+    - contextual
+    - devel
+    - devel_generate
+    - devel_generate_commerce
+    - entity_reference_revisions
+    - file
+    - filter
+    - node
+    - paragraphs
+    - path
+    - system
+    - taxonomy
+    - toolbar
+    - tour
+    - update
+id: content_editor
+label: 'Content editor'
+weight: 4
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access commerce administration pages'
+  - 'access commerce_order overview'
+  - 'access commerce_product overview'
+  - 'access commerce_product_attribute overview'
+  - 'access commerce_promotion overview'
+  - 'access commerce_shipping_method overview'
+  - 'access commerce_store overview'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access devel information'
+  - 'access files overview'
+  - 'access site in maintenance mode'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access tour'
+  - 'access user contact forms'
+  - 'add commerce_log commerce_order admin comment'
+  - 'administer commerce_currency'
+  - 'administer commerce_order'
+  - 'administer commerce_order_type'
+  - 'administer commerce_package_type'
+  - 'administer commerce_payment'
+  - 'administer commerce_payment_gateway'
+  - 'administer commerce_payment_method'
+  - 'administer commerce_product'
+  - 'administer commerce_product_attribute'
+  - 'administer commerce_product_type'
+  - 'administer commerce_promotion'
+  - 'administer commerce_shipment'
+  - 'administer commerce_shipment_type'
+  - 'administer commerce_shipping_method'
+  - 'administer commerce_store'
+  - 'administer commerce_store_type'
+  - 'administer commerce_tax_type'
+  - 'administer contact forms'
+  - 'administer devel_generate'
+  - 'administer devel_generate_commerce'
+  - 'administer nodes'
+  - 'administer paragraphs settings'
+  - 'administer paragraphs types'
+  - 'administer url aliases'
+  - 'bulk generate commerce_promotion_coupon'
+  - 'create article content'
+  - 'create brapochuta commerce_product'
+  - 'create clothing commerce_product'
+  - 'create commerce_product_attribute'
+  - 'create commerce_promotion'
+  - 'create commerce_shipping_method'
+  - 'create default commerce_order'
+  - 'create landing_page content'
+  - 'create online commerce_store'
+  - 'create page content'
+  - 'create simple commerce_product'
+  - 'create uauodre commerce_product'
+  - 'create url aliases'
+  - 'delete any brapochuta commerce_product'
+  - 'delete any clothing commerce_product'
+  - 'delete any commerce_payment_method'
+  - 'delete any commerce_promotion'
+  - 'delete any online commerce_store'
+  - 'delete any simple commerce_product'
+  - 'delete any uauodre commerce_product'
+  - 'delete article revisions'
+  - 'delete commerce_product_attribute'
+  - 'delete commerce_shipping_method'
+  - 'delete default commerce_order'
+  - 'delete landing_page revisions'
+  - 'delete orphan revisions'
+  - 'delete own article content'
+  - 'delete own brapochuta commerce_product'
+  - 'delete own clothing commerce_product'
+  - 'delete own commerce_promotion'
+  - 'delete own landing_page content'
+  - 'delete own online commerce_store'
+  - 'delete own page content'
+  - 'delete own simple commerce_product'
+  - 'delete own uauodre commerce_product'
+  - 'delete page revisions'
+  - 'duplicate any commerce_promotion'
+  - 'duplicate any online commerce_store'
+  - 'duplicate own commerce_promotion'
+  - 'duplicate own online commerce_store'
+  - 'edit any article content'
+  - 'edit any landing_page content'
+  - 'edit any page content'
+  - 'edit behavior plugin settings'
+  - 'edit own article content'
+  - 'edit own comments'
+  - 'edit own landing_page content'
+  - 'edit own page content'
+  - 'export configuration'
+  - 'import configuration'
+  - 'manage brapochuta commerce_product_variation'
+  - 'manage clothing commerce_product_variation'
+  - 'manage default commerce_order_item'
+  - 'manage default commerce_shipment'
+  - 'manage order commerce_order_item'
+  - 'manage simple commerce_product_variation'
+  - 'manage uauodre commerce_product_variation'
+  - 'revert article revisions'
+  - 'revert landing_page revisions'
+  - 'revert page revisions'
+  - 'switch users'
+  - 'synchronize configuration'
+  - 'update any brapochuta commerce_product'
+  - 'update any clothing commerce_product'
+  - 'update any commerce_payment_method'
+  - 'update any commerce_promotion'
+  - 'update any online commerce_store'
+  - 'update any simple commerce_product'
+  - 'update any uauodre commerce_product'
+  - 'update commerce_product_attribute'
+  - 'update commerce_shipping_method'
+  - 'update default commerce_order'
+  - 'update own brapochuta commerce_product'
+  - 'update own clothing commerce_product'
+  - 'update own commerce_promotion'
+  - 'update own online commerce_store'
+  - 'update own simple commerce_product'
+  - 'update own uauodre commerce_product'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'view any commerce_payment_method'
+  - 'view article revisions'
+  - 'view brapochuta commerce_product'
+  - 'view clothing commerce_product'
+  - 'view commerce_order'
+  - 'view commerce_product_attribute'
+  - 'view commerce_promotion'
+  - 'view commerce_shipping_method'
+  - 'view commerce_store'
+  - 'view default commerce_order'
+  - 'view landing_page revisions'
+  - 'view online commerce_store'
+  - 'view own unpublished commerce_product'
+  - 'view own unpublished content'
+  - 'view page revisions'
+  - 'view simple commerce_product'
+  - 'view the administration theme'
+  - 'view uauodre commerce_product'
+  - 'view unpublished paragraphs'
+  - 'view update notifications'

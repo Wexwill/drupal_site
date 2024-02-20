@@ -1,0 +1,18 @@
+uuid: 2dd0cd37-936b-48c0-a5a5-485127326c41
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cities
+id: taxonomy_term.cities.name
+field_name: name
+entity_type: taxonomy_term
+bundle: cities
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

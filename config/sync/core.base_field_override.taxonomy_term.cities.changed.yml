@@ -1,0 +1,18 @@
+uuid: f44d67c1-f79c-42c5-8c0e-92da3dfa7507
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cities
+id: taxonomy_term.cities.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: cities
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

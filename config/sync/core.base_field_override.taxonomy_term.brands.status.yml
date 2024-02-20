@@ -1,0 +1,22 @@
+uuid: 87669021-b60e-4466-8d46-ac9f7c8d20df
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.brands
+id: taxonomy_term.brands.status
+field_name: status
+entity_type: taxonomy_term
+bundle: brands
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

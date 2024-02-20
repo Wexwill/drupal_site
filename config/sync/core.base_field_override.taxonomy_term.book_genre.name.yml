@@ -1,0 +1,18 @@
+uuid: 15e42ab3-2bbc-43de-874b-83e937dd1cb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.book_genre
+id: taxonomy_term.book_genre.name
+field_name: name
+entity_type: taxonomy_term
+bundle: book_genre
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

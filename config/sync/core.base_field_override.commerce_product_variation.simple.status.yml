@@ -1,0 +1,22 @@
+uuid: a4601c16-dc7e-4d4c-8444-6f5fc1aa200b
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.simple
+id: commerce_product_variation.simple.status
+field_name: status
+entity_type: commerce_product_variation
+bundle: simple
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

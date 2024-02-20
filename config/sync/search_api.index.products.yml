@@ -1,6 +1,6 @@
 uuid: a215471e-c500-491a-a9d0-776fbec99aef
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - field.storage.commerce_product.field_product_categories

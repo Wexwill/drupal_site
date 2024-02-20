@@ -1,0 +1,20 @@
+uuid: d29361c2-d370-448d-8813-6b6f03d52642
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cities
+  module:
+    - path
+id: taxonomy_term.cities.path
+field_name: path
+entity_type: taxonomy_term
+bundle: cities
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

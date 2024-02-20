@@ -1,0 +1,22 @@
+uuid: 0d6479ac-1d3b-4c9e-ac1f-b202a69afe25
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cities
+id: taxonomy_term.cities.status
+field_name: status
+entity_type: taxonomy_term
+bundle: cities
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

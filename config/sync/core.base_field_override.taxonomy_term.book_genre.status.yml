@@ -1,0 +1,22 @@
+uuid: bc73bd0b-ee45-4abb-b6a8-ddb241e0df2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.book_genre
+id: taxonomy_term.book_genre.status
+field_name: status
+entity_type: taxonomy_term
+bundle: book_genre
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

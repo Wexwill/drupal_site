@@ -1,0 +1,8 @@
+_core:
+  default_config_hash: DE2ZUZfWQnG6oBYyOji_HJgCfiqvv5HmeleNA4i4weQ
+permission_mode: false
+allow_viewing: true
+require_all_terms_granted: false
+disable_node_access_records: true
+target_bundles: {  }
+only_parents: 0

@@ -1,0 +1,6 @@
+display:
+  default:
+    display_options:
+      fields:
+        remove_button:
+          label: Remove

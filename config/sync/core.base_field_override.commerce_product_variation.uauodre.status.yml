@@ -1,0 +1,22 @@
+uuid: 7849a91e-5646-48c3-93e6-6b3a33d8c464
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.uauodre
+id: commerce_product_variation.uauodre.status
+field_name: status
+entity_type: commerce_product_variation
+bundle: uauodre
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

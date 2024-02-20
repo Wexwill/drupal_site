@@ -1,0 +1,18 @@
+uuid: 5c574a20-7cc0-4008-a76f-bb40320ce3bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.book_genre
+id: taxonomy_term.book_genre.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: book_genre
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

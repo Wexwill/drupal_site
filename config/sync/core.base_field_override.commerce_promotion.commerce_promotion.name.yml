@@ -1,0 +1,18 @@
+uuid: e4e84ee1-b85f-4c49-99e7-a2abb86cd09f
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_promotion
+id: commerce_promotion.commerce_promotion.name
+field_name: name
+entity_type: commerce_promotion
+bundle: commerce_promotion
+label: Name
+description: 'The promotion name.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
